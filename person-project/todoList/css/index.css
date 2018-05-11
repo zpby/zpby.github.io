@@ -1,0 +1,288 @@
+body {
+    background-color: #edf0f1;
+}
+
+/*输入事项框*/
+/*所有象限共有的样式用class,不同的用id*/
+.class-div-quadrant {
+    width: 50%;
+    border: 1px solid grey;
+    height: 50%;
+    overflow: hidden;
+    float: left;
+}
+.class-div-header {
+    width: 100%;
+    height: 80px;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    padding: 15px;
+    box-shadow: 0px 2px 4px rgba(44, 62, 80, 0.15);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/*header背景颜色不同*/
+#id-div-header-1 {
+    background-color: #b92525;
+}
+#id-div-header-2 {
+    background-color: #335977;
+}
+#id-div-header-3 {
+    background-color: #de9b37;
+}
+#id-div-header-4 {
+    background-color: #a7d078;
+}
+
+.class-div-header input {
+    width: 100%;
+    height: 50px;
+    float: left;
+    color: #fff;
+    padding: 0px 60px 0 18px;
+    font-size: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border: 0px;
+    box-shadow: none;
+    outline: none;
+}
+
+/*添加事项的输入框默认文字颜色，考虑不同浏览器兼容性*/
+.class-div-header input::-webkit-input-placeholder { /* WebKit browsers */
+    color: rgba(255, 255, 255, 0.75);
+}
+.class-div-header input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: rgba(255, 255, 255, 0.75);
+}
+.class-div-header input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: rgba(255, 255, 255, 0.75);
+}
+.class-div-header input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: rgba(255, 255, 255, 0.75);
+}
+
+/*添加button的样式设置*/
+.class-div-header button {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 2;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 0px;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+}
+/*添加button的矢量图标样式设置*/
+.class-div-header button svg {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -8px 0 0 -8px;
+}
+
+/*不同象限的添加button的矢量图标填充颜色是不同的*/
+#id-div-header-1 button svg .fill {
+    fill: #b92525;
+}
+#id-div-header-2 button svg .fill {
+    fill: #335977;
+}
+#id-div-header-3 button svg .fill {
+    fill: #de9b37;
+}
+#id-div-header-4 button svg .fill {
+    fill: #a7d078;
+}
+
+
+/*container*/
+.class-div-container {
+    width: 100%;
+    float: left;
+    padding: 15px;
+}
+
+.class-ul-allTodo, .class-ul-doneTodo {
+    width: 100%;
+    float: left;
+}
+
+.class-ul-doneTodo {
+    position: relative;
+    padding: 20px 0 0 0;
+}
+
+.class-ul-allTodo li, .class-ul-doneTodo li {
+    width: 100%;
+    float: left;
+    min-height: 50px;
+    background-color: #fff;
+    font-size: 14px;
+    font-weight: 500px;
+    color: #444;
+    line-height: 22px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.10);
+    margin-bottom: 10px;
+    position: relative;
+    padding: 14px 100px 14px 14px;
+    transition: opacity 0.3s;*/
+}
+
+.class-ul-allTodo li:hover, .class-ul-doneTodo li:hover {
+    box-shadow: 0px 1px 4px rgba(44, 62, 80, 0.50);
+    border: 1px solid rgba(86, 170, 255, 0.50);
+}
+
+.class-div-todoButtons {
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.class-div-todoButtons button {
+    width: 50px;
+    height: 50px;
+    float: left;
+    background: none;
+    border: 0px;
+    box-shadow: none;
+    outline: none;
+    position: relative;
+    cursor: pointer;
+}
+
+.noFill {
+    fill: none;
+}
+
+.class-div-todoButtons button svg {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -11px 0 0 -11px;
+    background: #fff;
+    border-radius: 11px;
+    transition: fill 0.2s ease;
+}
+
+.class-div-todoButtons button svg .fill {
+    transition: fill 0.2s ease;
+}
+
+/*颜色*/
+/*鼠标移出时删除标志为淡白色*/
+.class-svg-remove .fill {
+    fill: #c0cecb;
+}
+/*鼠标移入时删除标志变色*/
+.class-button-removeTodo-1:hover svg .fill {
+    fill: #e85656;
+}
+
+.class-button-removeTodo-2:hover svg .fill {
+    fill: #5C7A92;
+}
+
+.class-button-removeTodo-3:hover svg .fill {
+    fill: #E5AF5F;
+}
+
+.class-button-removeTodo-4:hover svg .fill {
+    fill: #B9D993;
+}
+
+/*completeTodo的border颜色设置*/
+.class-button-completeTodo-1 svg {
+    border: 1.5px solid #b92525;
+}
+
+.class-button-completeTodo-2 svg {
+    border: 1.5px solid #335977;
+}
+
+.class-button-completeTodo-3 svg {
+    border: 1.5px solid #DE9B37;
+}
+
+.class-button-completeTodo-4 svg {
+    border: 1.5px solid #A7D078;
+}
+/*填充颜色*/
+.class-button-completeTodo-1 svg .fill {
+    fill: #b92525;
+}
+
+.class-button-completeTodo-2 svg .fill {
+    fill: #335977;
+}
+
+.class-button-completeTodo-3 svg .fill {
+    fill: #DE9B37;
+}
+
+.class-button-completeTodo-4 svg .fill {
+    fill: #A7D078;
+}
+/*移入填充白色*/
+.class-svg-complete:hover .fill {
+    fill: #fff;
+}
+
+
+.class-button-completeTodo-1 svg:hover {
+    background-color: #b92525;
+}
+
+.class-button-completeTodo-2 svg:hover {
+    background-color: #335977;
+}
+
+.class-button-completeTodo-3 svg:hover {
+    background-color: #DE9B37;
+}
+
+.class-button-completeTodo-4 svg:hover {
+    background-color: #A7D078;
+}
+/*done是挂载在class-button-completeTodo-*上的类*/
+.done svg .fill{
+    fill: #fff;
+}
+.class-button-completeTodo-1.done svg {
+    background-color: #b92525;
+}
+
+.class-button-completeTodo-2.done svg {
+    background-color: #335977;
+}
+
+.class-button-completeTodo-3.done svg {
+    background-color: #DE9B37;
+}
+
+.class-button-completeTodo-4.done svg {
+    background-color: #A7D078;
+}
+
+.removeLi {
+    opacity: 0;
+}

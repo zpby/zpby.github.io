@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>game 1</title>
+        <style media="screen">
+            .box {
+                display: flex;
+                justify-content: center;
+            }
+            canvas {
+                border: 1px black solid;
+            }
+            hr {
+                width: 800px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <canvas id="id-canvas" width="800" height="600"></canvas>
+        </div>
+        <div class="box">
+            <p>按k开始游戏，f发射弹球，r重新游戏，a/d左右移动木板</p>
+        </div>
+        <hr>
+        <div class="box">
+            <input id=id-input-speed type="range" value="50">
+        </div>
+
+        <!-- 场景数据 -->
+        <script src='game/level.js'></script>
+
+        <script src='game/utils.js'></script>
+        <script src='game/game_scene.js'></script>
+        <script src='game/modelgame.js'></script>
+        <script src='game/main.js'></script>
+
+        <!-- 场景文件 -->
+        <script src='scene/main/paddle.js'></script>
+        <script src='scene/main/ball.js'></script>
+        <script src='scene/main/block.js'></script>
+        <script src='scene/main/scene.js'></script>
+
+        <script src='scene/end/scene_end.js'></script>
+        <script src='scene/end/success.js'></script>
+        <script src='scene/start/scene_start.js'></script>
+    </body>
+</html>

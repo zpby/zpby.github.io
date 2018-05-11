@@ -1,10 +1,152 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1>hello</h1>
-  </body>
+<!doctype html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <base target="_blank">
+    <title>前端作品</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", Heiti, "黑体", sans-serif;
+        }
+        h2,a{
+            font-size:22px;
+            line-height:2.7;
+        }
+        .according-title,.according-list a{
+            -webkit-transition:all 0.7s ease;
+            -moz-transition:all 0.7s ease;
+            -ms-transition:all 0.7s ease;
+            -o-transition:all 0.7s ease;
+            transition:all 0.7s ease;
+        }
+
+        .main{
+            width:540px;
+            box-sizing:border-box;
+            padding:80px;
+            margin:20px auto;
+            border-radius:5px;
+            border:1px solid #ccc;
+            box-shadow:0 0 4px #ccc;
+        }
+        @media screen and (max-width:540px){
+            .main{
+                width:90%;
+                padding:40px;
+            }
+            h2,a{
+                font-size:14px;
+            }
+        }
+        .according-wrap{
+            border-bottom:1px solid #ccc;
+        }
+        .according-title,.according-list a{
+            display:block;
+            color:#69777d;
+            text-indent:20px;
+            border-radius:5px;
+            cursor:pointer;
+            text-decoration:none;
+        }
+        .according-title:hover,.according-list a:hover{
+            color:#fff;
+            background:#928c83;
+            text-indent:40px;
+        }
+        .according-title.closed+.according-list{
+            /*
+            问题的根本原因是transform之后其他的元素认为该元素还在原来的状态。
+            原来的方案改变了position，能解决问题但是不是很好。后来决定用height：0；正常情况下height：auto，不会形成height过度，何况我把时间设为0s
+            */
+            -webkit-transform:scale(1,0);
+            -moz-transform:scale(1,0);
+            -ms-transform:scale(1,0);
+            -o-transform:scale(1,0);
+            transform:scale(1,0);
+            -webkit-transition-duration:0s;
+            -moz-transition-duration:0s;
+            -ms-transition-duration:0s;
+            -o-transition-duration:0s;
+            transition-duration:0s;
+            height:0;
+        }
+        .according-list{
+            padding-left:30px;
+            -webkit-transform-origin:top center;
+            -moz-transform-origin:top center;
+            -o-transform-origin:top center;
+            -ms-transform-origin:top center;
+            transform-origin:top left;
+            -webkit-transition:transform 0.6s cubic-bezier(0.25,0.1,0.3,1.5);
+            -moz-transition:transform 0.6s cubic-bezier(0.25,0.1,0.3,1.5);
+            -ms-transition:transform 0.6s cubic-bezier(0.25,0.1,0.3,1.5);
+            -o-transition:transform 0.6s cubic-bezier(0.25,0.1,0.3,1.5);
+            transition:transform 0.6s cubic-bezier(0.25,0.1,0.3,1.5);
+        }
+    </style>
+</head>
+<body>
+    <main class='main' id="main">
+        <section class='according-wrap'>
+            <h2 class='according-title closed'>常见效果</h2>
+            <div class='according-list'>
+                <a href='#' >各类轮播图</a>
+                <a href='#' >抽奖</a>
+                <a href='#' >时钟效果</a>
+            </div>
+        </section>
+        <section class='according-wrap'>
+          <h2 class='according-title closed'>vue项目</h2>
+          <div class='according-list closed'>
+            <a href='#'>购物车</a>
+            <a href='#'>cnodejs社区搭建</a>
+          </div>
+        </section>
+        <section class='according-wrap'>
+            <h2 class='according-title closed'>个人项目</h2>
+            <div class='according-list'>
+              <a href='person-project/打转块/game.html#'>打砖块小游戏</a>
+              <a href='person-project/todoList/index.html'>原生todoList实现</a>
+              <a href='#'>基于jquey实现的音乐播放器</a>
+              <a href='person-project/spider/jianshu'>爬取简书首页</a>
+            </div>
+        </section>
+        <section class='according-wrap'>
+            <h2 class='according-title closed'>网站模仿</h2>
+            <div class='according-list'>
+                <a href='html-template/hetao/index.html'>核桃网仿写</a>
+            </div>
+        </section>
+
+    </main>
+    <script>
+        function according(id){
+            var main = document.querySelector("#"+id);
+            var according_title = main.querySelectorAll(".according-title");
+            var len = according_title.length;
+
+            for(var i=len;i--;){
+                according_title[i].index = i;
+                according_title[i].onclick = function(){
+                    for(var j=len;j--;){
+                        if(j==this.index){
+                            according_title[j].classList.toggle("closed");
+                        }else{
+                            according_title[j].classList.add("closed");
+                        }
+                    }
+                }
+            }
+
+        }
+
+        according("main");
+    </script>
+</body>
 </html>
