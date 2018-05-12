@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.outer {
+    height: 340px;
+    width: 1000px;
+    margin: 200px auto;
+    position: relative;
+}
+
+.inner {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+}
+
+img {
+    position: absolute;
+    width: 790px;
+    height: 400px;
+    left: 50%;
+    top: 50%;
+    margin-left: -395px;
+    margin-top: -200px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    filter: blur(5px);
+}
+
+.inner img {
+    filter: blur(0px);
+    transform: translate3d(0px, 0px, -400px);
+}
+
+.inner .now {
+    filter: blur(0px);
+    transform: translate3d(0px, 0px, 0px);
+}
+
+.inner .left1 {
+    transform: translate3d(-300px, 0px, -200px);
+}
+
+.inner .right1 {
+    transform: translate3d(300px, 0px, -200px);
+}
+
+.left, .right {
+    width: 50%;
+    height: 100%;
+    float: left;
+    z-index: 999;
+    position: relative;
+}
+
+.left {
+    background: url(btn_l.png) no-repeat center center;
+}
+
+.right {
+    background: url(btn_r.png) no-repeat center center;
+}
+
+.left:hover, .right:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
