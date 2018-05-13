@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>随机抽奖</title>
+    <!--可适配移动端-->
+    <style id="style">
+        /*@keyframes rotateAni {*/
+        /*from {*/
+        /*transform: rotate(0deg);*/
+        /*-webkit-transform: rotate(0deg);*/
+        /*-moz-transform: rotate(0deg);*/
+        /*}*/
+        /*to {*/
+        /*transform: rotate(1080deg);*/
+        /*-webkit-transform: rotate(1080deg);*/
+        /*-moz-transform: rotate(1080deg);*/
+        /*}*/
+        /*}*/
+
+        /*@-webkit-keyframes rotateAni {*/
+        /*from {*/
+        /*transform: rotate(0deg);*/
+        /*-webkit-transform: rotate(0deg);*/
+        /*-moz-transform: rotate(0deg);*/
+        /*}*/
+        /*to {*/
+        /*transform: rotate(1080deg);*/
+        /*-webkit-transform: rotate(1080deg);*/
+        /*-moz-transform: rotate(1080deg);*/
+        /*}*/
+        /*}*/
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .wrap {
+            width: 30rem;
+            height: 30rem;
+            border-radius: 50%;
+            background: red;
+            margin: 10rem auto;
+            display: flex;
+            position: relative;
+        }
+
+        .turntable {
+            width: 28rem;
+            height: 28rem;
+            border-radius: 50%;
+            background: yellow;
+            position: relative;
+            margin: auto;
+            transform-origin: 50% 50%;
+            transition: transform 5s ease;
+            /*-webkit-transition: transform 1s ease;*/
+        }
+
+        .start-btn {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            background: orange;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            line-height: 5rem;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .pointer {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-left: 2rem solid transparent;
+            border-right: 2rem solid transparent;
+            border-bottom: 4rem solid #e4370e;
+            z-index: 5;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .line {
+            overflow: hidden;
+            position: absolute;
+            left: 13.8rem;
+            top: 0;
+            width: 0.3em;
+            height: 14rem;
+            background-color: rgba(228, 55, 14, 0.6);
+            transform-origin: 50% 14rem;
+            -webkit-transform-origin: 50% 14rem;
+            -moz-transform-origin: 50% 14rem;
+        }
+
+        .reward {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #333333;
+        }
+
+        .reward p {
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .wrap a {
+            font-size: 1.5rem;
+        }
+
+        /*适配*/
+        @media only screen and (min-width: 320px) {
+            html {
+                font-size: 10px
+            }
+        }
+
+        @media only screen and (min-width: 375px) {
+            html {
+                font-size: 11.71875px
+            }
+        }
+
+        @media only screen and (min-width: 480px) {
+            html {
+                font-size: 15px
+            }
+        }
+    </style>
+</head>
+<body>
+<section class="wrap">
+    <div class="pointer"></div>
+    <a href="javascript:;" class="start-btn">抽奖</a>
+    <div class="turntable">
+        <ul class="reward-item">
+        </ul>
+    </div>
+</section>
+
+<script>
+    // 用于往父节点插入子节点的函数
+    var appendHtml = function (element, html) {
+        element.insertAdjacentHTML('beforeend', html)
+    }
+    // 奖品列表模板
+    var templateReward = function (reward, degNum, turnNum) {
+        var r = `<li>
+                    <div class="line" style="transform: rotate(${degNum}deg)"></div>
+                    <div class="reward" style="transform: rotate(${turnNum}turn)">
+                        <p>${reward}</p>
+                    </div>
+                </li>`
+        return r
+    }
+    // 拿到1到指定数的随机数
+    var getRandom = function (limit) {
+        var r = Math.floor(Math.random() * limit) + 1
+        return r
+    }
+    // 根据传入的奖品数组生成转盘
+    var createTurntable = function (rewards) {
+        var len = rewards.length
+        var rotateDeg = 360 / (len)
+        var rotateTurn = 1 / (len)
+        for (var i = 0; i < len; i++) {
+            var ul = document.querySelector('.reward-item')
+            var reward = rewards[i]
+            var degNum = rotateDeg * i + rotateDeg / 2
+            var turnNum = rotateTurn * i
+            appendHtml(ul, templateReward(reward, degNum, turnNum))
+        }
+    }
+    // 点击开始事件
+    var eventStart = function (len) {
+        var btn = document.querySelector('.start-btn')
+        var t = document.querySelector('.turntable')
+        // 在css中指定转动时间和缓入，点击btn决定转动角度
+        var addDeg = 0
+        btn.addEventListener('click', function () {
+            var r = getRandom(len)
+            addDeg += Number(360 / len * r) + 3600
+            t.style.transform = "rotate(" + addDeg + "deg)"
+        })
+    }
+    // 程序主入口
+    var __main = function () {
+        var rewards = ["水杯", "笔记本", "手机", "便签", "500元现金"]
+        var len = rewards.length
+
+        createTurntable(rewards)
+        eventStart(len)
+    }
+
+    __main()
+</script>
+</body>
+</html>

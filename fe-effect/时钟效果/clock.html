@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时钟效果</title>
+    <style>
+        .wrap {
+            height: 600px;
+            width: 600px;
+            margin: 100px auto;
+        }
+
+        .clock-bg {
+            width: 100%;
+            height: 100%;
+            background: url("clock.png") no-repeat center center;
+            background-size: contain;
+            position: relative;
+        }
+
+        .round {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            background: #ef8787;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        .pointer {
+            position: absolute;
+            transform-origin: center bottom;
+        }
+
+        .hour {
+            width: 20px;
+            height: 20%;
+            top: 30%;
+            left: calc(50% - 10px);
+            background-color: #b3b3b3;
+            z-index: 8;
+        }
+
+        .minute {
+            width: 12px;
+            height: 28%;
+            top: 22%;
+            left: calc(50% - 6px);
+            background-color: #a96f8c;
+            z-index: 5;
+        }
+
+        .second {
+            width: 6px;
+            height: 35%;
+            top: 15%;
+            left: calc(50% - 3px);
+            background-color: #f1f152;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="clock-bg">
+        <div class="round"></div>
+        <div class="hour pointer"></div>
+        <div class="minute pointer"></div>
+        <div class="second pointer"></div>
+    </div>
+</div>
+<script>
+    function clock() {
+        var time = new Date();
+        var h = time.getHours();
+        var m = time.getMinutes();
+        var s = time.getSeconds();
+        var sDOM = document.querySelector(".second");
+        sDOM.style.transform = "rotate(" + 6 * s + "deg)";
+        var mDOM = document.querySelector(".minute");
+        mDOM.style.transform = "rotate(" + 6 * m + "deg)";
+        var hDOM = document.querySelector(".hour");
+        hDOM.style.transform = "rotate(" + 30 * (h % 12) + "deg)";
+    }
+
+    var t = setInterval("clock()", 100)
+</script>
+</body>
+</html>
