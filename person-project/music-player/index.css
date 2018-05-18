@@ -1,0 +1,329 @@
+/* reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td { margin:0; padding:0; }
+body { background:#fff; color:#555; font-size:14px; font-family: Verdana, Arial, Helvetica, sans-serif; }
+td,th,caption { font-size:14px; }
+h1, h2, h3, h4, h5, h6 { font-weight:normal; font-size:100%; }
+address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; font-weight:normal;}
+a { color:#555; text-decoration:none; }
+a:hover { text-decoration:underline; }
+img { border:none; }
+ol,ul,li { list-style:none; }
+input, textarea, select, button { font:14px Verdana,Helvetica,Arial,sans-serif; }
+table { border-collapse:collapse; }
+html {overflow-y: scroll;}
+
+/* 页面样式 */
+body {
+    overflow: hidden;
+}
+.wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-content: space-around;
+}
+.overlay {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.5);
+    z-index: -1;
+}
+
+.lightbox img {
+    position: absolute;
+    -webkit-filter: blur(50px);
+    -moz-filter: blur(50px);
+    filter: blur(50px);
+    z-index: -2;
+}
+
+header {
+    flex: 1;
+}
+section {
+    flex: 4;
+}
+nav {
+    flex: 0.5;
+}
+footer {
+    flex: 1;
+}
+
+header {
+    position: relative;
+    top: 0;
+    width: 100vw;
+    padding: 1rem;
+    display: flex;
+    border-bottom: 0.1rem solid #797979;
+}
+.list-music {
+    display: flex;
+    cursor: pointer;
+}
+.list-music img {
+    width: 3rem;
+    height: 3rem;
+    margin: auto;
+}
+.current-music {
+    display: inline-block;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #cacaca;
+}
+.current-music span {
+    padding: 1rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*cd转盘*/
+.music-cd {
+    margin: 5rem 0;
+    display: flex;
+    position: relative;
+}
+@keyframes poleRotate {
+    from {
+        transform: rotate(-16deg);
+    }
+    to {
+        transform: rotate(15deg);
+    }
+}
+.cd-pole img {
+    position: absolute;
+    top: -4rem;
+    height: 10rem;
+    left: 50%;
+    /*transform: translateY(-50%);*/
+    transform-origin: 0% 0%;
+    transform: rotate(-16deg);
+    /*如果被激活*/
+    /*transform: rotate(15deg);*/
+    z-index: 1;
+}
+
+.cd-turntable {
+    display: flex;
+    margin: auto;
+    width: 16rem;
+    height: 16rem;
+    background: url("img/cd.png") no-repeat;
+    background-size: cover;
+}
+.cd-turntable .cd-pic {
+    margin: auto;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.cd-turntable .cd-pic img {
+    width: 15rem;
+    height: 15rem;
+    border: none;
+}
+
+.cd-turntable {
+    margin: auto;
+    transform-origin: 50% 50%;
+    animation: rotateAni 1s infinite;
+    /*transition: transform 5s ease;*/
+    /*-webkit-transition: transform 5s ease;*/
+}
+
+.music-lynic p {
+    text-align: center;
+}
+
+/*获取歌曲*/
+.getRandomMusic {
+    margin-bottom: 1rem;
+    position: relative;
+}
+.getRandomMusic h1 {
+    color: #555555;
+    width: 10rem;
+    border-radius: 1rem;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+footer {
+    position: relative;
+    width: 100vw;
+}
+
+.play-time-control {
+    width: 100%;
+    display: inline-flex;
+    justify-content:space-between;
+    margin-bottom: 1rem;
+}
+
+.play-time-control span {
+    margin: auto;
+}
+.center {
+    display: inline-flex;
+    margin: auto;
+    width: 18rem;
+    height: 0.1rem;
+}
+.play-progress {
+    margin: 0 0.5rem;
+    position: relative;
+    width: 100%;
+    height: 0.1rem;
+}
+.play-progress .white-line {
+    width: 16rem;
+    height: 0.1rem;
+    background: white;
+    border-radius: 0.1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.play-progress .red-line {
+    height: 0.1rem;
+    background: red;
+    border-radius: 0.1rem;
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    /*变量*/
+    width: 0rem;
+}
+.play-progress .progress-point {
+    background: red;
+    border: 0.3rem solid white;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    transform: translateY(-50%);
+    /*变量*/
+    left: 0rem;
+    /*left: 16rem;*/
+}
+
+.play-btn-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.play-btn-list span {
+    cursor: pointer;
+}
+.play-btn-list img {
+    margin: auto;
+    width: 2.5rem;
+}
+.play-stop img {
+    width: 3rem;
+}
+
+/*modal*/
+@keyframes moveModal {
+    from {
+        top: -20rem;
+    }
+    to {
+        top: 0rem;
+    }
+}
+.modal {
+    background: white;
+    border-radius: 0 0  0.5rem 0.5rem;
+    width: 100%;
+    height: 20rem;
+    overflow: auto;
+    position: absolute;
+    top: 0rem;
+    display: none;
+    z-index: 10;
+}
+.active {
+    display: block;
+}
+.hide {
+    display: none;
+}
+.actAnimation {
+    animation: moveModal 0.2s forwards;
+}
+.modal ul {
+    list-style: none;
+}
+.modal ul li {
+    height: 3.5rem;
+    display: flex;
+}
+.modal ul li:hover {
+    background: #42372c59;
+}
+.modal ul li img {
+    flex: 1;
+    width: 3rem;
+    margin: 0.25rem 0;
+}
+.modal ul li p {
+    flex: 6;
+    padding-left: 0.5rem;
+    line-height: 3.5rem;
+    font-size: 2rem;
+}
+
+.layer {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.5);
+    z-index: 1;
+}
+
+/*适配*/
+@media only screen and (min-width: 320px) {
+    html {
+        font-size: 10px
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    html {
+        font-size: 11.71875px
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    html {
+        font-size: 15px
+    }
+}
