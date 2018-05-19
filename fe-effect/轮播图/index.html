@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" type="text/css" href="basic.css">
+  <link rel="stylesheet" type="text/css" href="carousel.css">
+</head>
+<body>
+<!--基本轮播图-->
+<div class="slide" data-imgs=3 data-active=0>
+  <img id=id-img-0 class="slide-img active" src="1.jpg" alt="">
+  <img id=id-img-1 class="slide-img" src="2.jpg" alt="">
+  <img id=id-img-2 class="slide-img" src="3.jpg" alt="">
+  <button class="slide-button onleft" id="id-left" data-next="-1"><</button>
+  <button class="slide-button onright" id="id-right" data-next="1">></button>
+  <div class="slide-indicators">
+    <div id=id-indi-0 class="slide-indi white"></div>
+    <div id=id-indi-1 class="slide-indi"></div>
+    <div id=id-indi-2 class="slide-indi"></div>
+  </div>
+</div>
+
+<!-- 旋转木马 -->
+<div class="outer">
+  <div class="inner">
+    <img src="1.jpg">
+    <img src="2.jpg">
+    <img src="3.jpg">
+    <img src="4.jpg">
+    <img src="5.jpg">
+    </div>
+  <div class="left"></div>
+  <div class="right"></div>
+</div>
+
+<script src="basic.js"></script>
+<script src="jquery.js"></script>
+<script src="carousel.js"></script>
+</body>
+</html>
