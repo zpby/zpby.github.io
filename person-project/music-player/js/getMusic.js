@@ -99,7 +99,7 @@ var loadMusic = function () {
 
 var getNewMusic = e('#id-get-newmusic')
 
-bindEvent(getNewMusic, 'touch' , function () {
+bindEvent(getNewMusic, 'touchstart' , function () {
     initMusic()
     getRadomMusic()
 
