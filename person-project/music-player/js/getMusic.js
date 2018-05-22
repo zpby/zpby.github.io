@@ -100,22 +100,9 @@ var loadMusic = function () {
 var getNewMusic = e('#id-get-newmusic')
 
 bindEvent(getNewMusic, 'touchstart' , function () {
+    console.log('测试')
     initMusic()
     getRadomMusic()
-
-    // 解决异步的函数,可以让函数依次执行
-    // var async = function (func) {
-    //     setTimeout(function(){
-    //         func()
-    //     }, 0)
-    // }
-    // async(function () {
-    //     var flag = getRadomMusic()
-    //     log('getRadomMusic', flag)
-    //
-    //     // var result = loadMusic(flag)
-    //     // log(result)
-    // })
 })
 
 
